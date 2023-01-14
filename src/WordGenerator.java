@@ -2,12 +2,7 @@ import java.util.Arrays;
 
 public class WordGenerator {
     static int mistakes = 0 ;
-
-    static String getWord() {
-        //TODO search file get random word
-        return "sandwich";
-    }
-
+    static boolean called = false;
 
     static String maskWord(String word) {
         char[] letters = word.toCharArray();
@@ -22,6 +17,7 @@ public class WordGenerator {
     }
 
     public static String guess(String word, String guess, String maskedWord) {
+        called = true;
         boolean changedValue = false;
         boolean winner = true;
         char[] letters = word.toCharArray();
@@ -57,5 +53,12 @@ public class WordGenerator {
         }
         System.out.println("mistakes"  + mistakes);
         return result.toString();
+    }
+
+    public static boolean hasGuessed() {
+        if (called){
+            called = false;
+            return  true;
+        }else return false;
     }
 }
